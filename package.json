@@ -1,7 +1,7 @@
 {
   "name": "project-4-team",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Scalable URL Shortner Project Requirement",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -11,7 +11,7 @@
     "type": "git",
     "url": "git+https://github.com/dhirajuranium/Project-4-Team.git"
   },
-  "author": "",
+  "author": "Subham Kumar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/dhirajuranium/Project-4-Team/issues"

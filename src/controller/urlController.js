@@ -22,7 +22,7 @@ redisClient.on("connect", async function () {
 
 //CONNECTION SETUP FOR RADIS
                                                                  
-const SET_ASYNC = promisify(redisClient.SET).bind(redisClient);
+const SETEX_ASYNC = promisify(redisClient.SETEX).bind(redisClient);
 const GET_ASYNC = promisify(redisClient.GET).bind(redisClient);
 
 
@@ -60,7 +60,7 @@ const createShortenUrl = async function (req, res) {
 
         const urlfind = await urlModel.findOne({ longUrl: longUrl }).select({ shortUrl: 1, urlCode: 1, _id: 0 })
        
-        await SET_ASYNC(`${longUrl}`, JSON.stringify(urlfind))
+        await SETEX_ASYNC(`${longUrl}`,3000, JSON.stringify(urlfind))
 
         if (urlfind) {
             return res.status(200).send({ status: true, message: "This url is already shorten", data: urlfind })
@@ -97,7 +97,7 @@ const getUrl = async function (req, res) {
             return res.status(404).send({ status: false, message: "This shortUrl and urlCode is Not found" })
         } else {
 
-            await SET_ASYNC(`${urlCode}`, JSON.stringify(findUrlCode))   // CONVERTING STRING
+            await SETEX_ASYNC(`${urlCode}`,3000, JSON.stringify(findUrlCode))   // CONVERTING STRING
 
             return res.redirect(302, findUrlCode.longUrl)
         }
