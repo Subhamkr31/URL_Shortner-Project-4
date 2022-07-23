@@ -17,7 +17,6 @@ const createUrl = async function (req,res){
         return res.status(400).send({ status: false, msg: "Please enter longUrl" })
     }
 
-    let longVaildurl = (/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%\+.~#?&//=]*)/).test(longUrl.trim())
         
     if(!longVaildurl){
         return  res.status(400).send({ status: false, msg: "Please enter vaild longUrl" })
