@@ -69,7 +69,7 @@ const createShortenUrl = async function (req, res) {
         let saveData = { longUrl, shortUrl, urlCode }
 
         await urlModel.create(saveData)
-        res.status(201).send({ status: true, message: "Success ", data: saveData })
+        res.status(201).send({ status: true, message: "Successfully created ", data: saveData })
 
     } catch (error) {
         res.status(500).send({ status: false, message: error.message })
